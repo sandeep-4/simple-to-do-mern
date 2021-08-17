@@ -1,16 +1,17 @@
 const mongoose = require("mongoose");
-const { MONGODB } = require("./config/config");
+
+const server = process.env.MONGODB;
 
 const connectToDb = () => {
   mongoose
-    .connect(MONGODB, {
+    .connect(server, {
       useNewUrlParser: true,
-      useFindAndModify: true,
       useCreateIndex: true,
+      useFindAndModify: true,
       useUnifiedTopology: true,
     })
     .then(() => {
-      console.log("Connnected to mongoDb");
+      console.log("Connected to mongoDb");
     })
     .catch((err) => {
       console.log(err);
